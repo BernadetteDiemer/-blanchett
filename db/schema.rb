@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_141035) do
+ActiveRecord::Schema.define(version: 2021_10_16_143445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "art_services", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "price"
+    t.string "address"
+    t.string "category"
+    t.bigint "users_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["users_id"], name: "index_art_services_on_users_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "status"
+    t.bigint "users_id", null: false
+    t.bigint "art_services_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["art_services_id"], name: "index_bookings_on_art_services_id"
+    t.index ["users_id"], name: "index_bookings_on_users_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +51,7 @@ ActiveRecord::Schema.define(version: 2021_10_16_141035) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "art_services", "users", column: "users_id"
+  add_foreign_key "bookings", "art_services", column: "art_services_id"
+  add_foreign_key "bookings", "users", column: "users_id"
 end
