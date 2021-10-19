@@ -1,0 +1,21 @@
+<div class="container">
+  <h3><%= @art_service.title %></h3>
+  <ul>
+    <li><i class="fa fa-star" aria-hidden="true"></i><p><strong>4.7</strong> (39 reviews)</p></li>
+    <li><i class="fa fa-map-marker" aria-hidden="true"></i><p>City, Country</p></li>
+    <li><i class="fa fa-user" aria-hidden="true"></i><p>Hosted by <strong><%= @art_service.user.first_name %></strong></p></li>
+  </ul>
+</div>
+
+<div class="service-gallery">
+  <div class="gallery-item col-4">
+    <img src="#" alt="">
+  </div>
+  <div class="gallery-item col-4 flexbox">
+    <img class="flex-item" src="#" alt="">
+    <img class="flex-item" src="#" alt="">
+  </div>
+  <div class="gallery-item col-4">
+    <img src="#" alt="">
+  </div>
+</div>
