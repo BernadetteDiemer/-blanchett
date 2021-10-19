@@ -1,21 +1,52 @@
 <div class="container">
   <h3><%= @art_service.title %></h3>
-  <ul>
+  <ul class="service-show-top-info">
     <li><i class="fa fa-star" aria-hidden="true"></i><p><strong>4.7</strong> (39 reviews)</p></li>
     <li><i class="fa fa-map-marker" aria-hidden="true"></i><p>City, Country</p></li>
     <li><i class="fa fa-user" aria-hidden="true"></i><p>Hosted by <strong><%= @art_service.user.first_name %></strong></p></li>
   </ul>
-</div>
 
-<div class="service-gallery">
-  <div class="gallery-item col-4">
-    <img src="#" alt="">
+  <div class="service-gallery">
+    <div class="gallery-item col-4">
+      <img src="#" alt="">
+    </div>
+    <div class="gallery-item col-4 flexbox">
+      <img src="#" alt="">
+      <img src="#" alt="">
+    </div>
+    <div class="gallery-item col-4">
+      <img src="#" alt="">
+    </div>
   </div>
-  <div class="gallery-item col-4 flexbox">
-    <img class="flex-item" src="#" alt="">
-    <img class="flex-item" src="#" alt="">
+
+  <div class="info">
+    <div class="col-8">
+      <h4>Tagline to Art-Service</h4>
+      <p><%= @art_service.description %></p>
+    </div>
+    <div class="col-4 booking-box">
+      <p>There should be a form here to book the service</p>
+    </div>
   </div>
-  <div class="gallery-item col-4">
-    <img src="#" alt="">
+
+  <div class="map">
+    <h4>Location</h4>
+    <%# here should be the code to implement a map with the address of the art_service %>
   </div>
+
+  <div class="about">
+    <h4>About <%= @art_service.user.first_name %></h4>
+    <p>Some text where the User can introduce themselves to the viewer of the #show-page</p>
+    <div class="info-box">
+      <div class="info-element">
+        <p><i class="fa fa-archive" aria-hidden="true"></i><%= @art_service.category %></p>
+      </div>
+      <div class="info-element">
+        <a href="#" class="btn btn-primary">Contact artist</a>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
