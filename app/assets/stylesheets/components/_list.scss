@@ -1,0 +1,8 @@
+.service-show-top-info {
+  list-style-type: none; // removes default bullets
+  margin: auto; // centers the list in it's parent element
+
+  li {
+    float: left; // makes the list items horizontal to each other
+  }
+}
