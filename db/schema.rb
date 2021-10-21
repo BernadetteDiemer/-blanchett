@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_19_184907) do
+ActiveRecord::Schema.define(version: 2021_10_21_174847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,22 +42,22 @@ ActiveRecord::Schema.define(version: 2021_10_19_184907) do
     t.integer "price"
     t.string "address"
     t.string "category"
-    t.bigint "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_art_services_on_users_id"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_art_services_on_user_id"
   end
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "status"
-    t.bigint "users_id", null: false
-    t.bigint "art_services_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["art_services_id"], name: "index_bookings_on_art_services_id"
-    t.index ["users_id"], name: "index_bookings_on_users_id"
+    t.bigint "user_id", null: false
+    t.bigint "art_service_id", null: false
+    t.index ["art_service_id"], name: "index_bookings_on_art_service_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,9 +73,8 @@ ActiveRecord::Schema.define(version: 2021_10_19_184907) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "art_services", "users", column: "users_id"
-  add_foreign_key "bookings", "art_services", column: "art_services_id"
-  add_foreign_key "bookings", "users", column: "users_id"
+  
+  add_foreign_key "art_services", "users"
+  add_foreign_key "bookings", "art_services"
+  add_foreign_key "bookings", "users"
 end
