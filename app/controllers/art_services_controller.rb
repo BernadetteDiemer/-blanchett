@@ -1,4 +1,6 @@
 class ArtServicesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :show]
+
   def new
     @art_services = ArtService.new
   end
