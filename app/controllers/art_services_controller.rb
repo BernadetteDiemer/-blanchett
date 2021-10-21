@@ -1,5 +1,9 @@
 class ArtServicesController < ApplicationController
- skip_before_action :authenticate_user!, only: :show, :home
+ skip_before_action :authenticate_user!, only: :show
+
+  def show
+    @art_service = ArtService.find(params[:id])
+  end
 
   def new
     @art_services = ArtService.new
@@ -18,9 +22,5 @@ class ArtServicesController < ApplicationController
 
   def art_services_params
     params.require(:art_service).permit(:title, :description, :price, :address, :category, photos: [])
-
-
-  def show
-    @art_service = ArtService.find(params[:id])
   end
 end
