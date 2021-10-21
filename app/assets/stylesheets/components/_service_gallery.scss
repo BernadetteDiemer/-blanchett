@@ -1,0 +1,8 @@
+.gallery-item {
+  padding: 8px;
+}
+
+.flexbox {
+  display: flex; // declares that this is a flex-item
+  flex-direction: column; // should make the two images appear vertically
+}
