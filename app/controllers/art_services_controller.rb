@@ -1,12 +1,24 @@
 class ArtServicesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :home]
 
+  def index
+    @art_services = ArtService.all
+  end
+
+  def show
+    @art_service = ArtService.find(params[:id])
+    authorize @art_service
+  end
+
   def new
-    @art_services = ArtService.new
+    @art_service = ArtService.new
+    authorize @art_service
   end
 
   def create
     @art_services = ArtService.new(art_services_params)
+    @art_services.user = current_user
+    authorize @art_services
     if @art_services.save
       redirect_to art_service_path(@art_services)
     else
@@ -18,9 +30,5 @@ class ArtServicesController < ApplicationController
 
   def art_services_params
     params.require(:art_service).permit(:title, :description, :price, :address, :category, photos: [])
-  end
-
-  def show
-    @art_service = ArtService.find(params[:id])
   end
 end
