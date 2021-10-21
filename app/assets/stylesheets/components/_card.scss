@@ -4,6 +4,18 @@
   grid-gap: 16px;
 }
 
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* this adds the "card" effect */
+  padding: 65px 16px;
+  text-align: center;
+  width: 160px;
+  height: 160px;
+  align-content: center;
+  background-color: #90e0ef;
+  margin-bottom: 34px;
+} // Virna
+
 .card-category {
   background-size: cover;
   background-position: center;
@@ -18,6 +30,39 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 100%;
+    width: 120px;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+
+  .card-product-infos {
+    padding: 16px;
+  }
+} // Virna
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
