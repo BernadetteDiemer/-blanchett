@@ -1,0 +1,24 @@
+.info {
+  margin-top: 380px;
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  padding-left:0;
+  padding-right:0;
+}
+
+.info-item {
+  padding: 0;
+}
+
+.booking-box {
+  background-color: rgb(48, 108, 136);
+  border-radius: 4px;
+  text-align: center;
+  align-content: center;
+  padding-top: 24px;
+
+  a {
+    color:white;
+  }
+}

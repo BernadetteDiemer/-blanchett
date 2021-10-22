@@ -1,40 +1,49 @@
 <div class="container">
-  <h3><%= @art_service.title %></h3>
+  <h3><%= @art_service.title.upcase %></h3>
   <ul class="service-show-top-info">
-    <li><i class="fa fa-star" aria-hidden="true"></i><p><strong>4.7</strong> (39 reviews)</p></li>
-    <li><i class="fa fa-map-marker" aria-hidden="true"></i><p>City, Country</p></li>
-    <li><i class="fa fa-user" aria-hidden="true"></i><p>Hosted by <strong><%= @art_service.user.first_name %></strong></p></li>
+    <li>
+      <div class="li-item">
+        <i class="fa fa-star" aria-hidden="true"></i><p><strong>4.7</strong> (39 reviews)</p>
+      </div>
+    </li>
+    <li>
+      <div class="li-item">
+        <i class="fa fa-map-marker" aria-hidden="true"></i><p>City, Country</p>
+      </div>
+    </li>
+    <li>
+      <div class="li-item">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <p>Hosted by <strong><%= @art_service.user.first_name %></strong></p>
+      </div>
+    </li>
   </ul>
-
-  <div class="service-gallery">
-    <div class="gallery-item col-4">
-      <img src="#" alt="">
-    </div>
-    <div class="gallery-item col-4 flexbox">
-      <img src="#" alt="">
-      <img src="#" alt="">
-    </div>
-    <div class="gallery-item col-4">
-      <img src="#" alt="">
+  <br>
+  <div class="gallery-box">
+    <div class="service-gallery">
+      <div class="gallery-item"></div>
+      <div class="gallery-item"></div>
+      <div class="gallery-item"></div>
     </div>
   </div>
 
-  <div class="info">
-    <div class="col-8">
-      <h4>Tagline to Art-Service</h4>
+  <div class="info box">
+    <div class="info-item col-8">
+      <h4>Description</h4>
       <p><%= @art_service.description %></p>
     </div>
-    <div class="col-4 booking-box">
-      <p>There should be a form here to book the service</p>
+
+    <div class="info-item col-4 booking-box">
+      <%= link_to "Book Now", new_booking_path %>
     </div>
   </div>
 
-  <div class="map">
-    <h4>Location</h4>
-    <%# here should be the code to implement a map with the address of the art_service %>
+
+  <h4>Location</h4>
+  <div class="map box">
   </div>
 
-  <div class="about">
+  <div class="about box">
     <h4>About <%= @art_service.user.first_name %></h4>
     <p>Some text where the User can introduce themselves to the viewer of the #show-page</p>
     <div class="info-box">
