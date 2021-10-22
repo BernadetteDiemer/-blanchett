@@ -1,5 +1,6 @@
 .info {
   margin-top: 380px;
+  height: 150px;
   display: flex;
   justify-content: space-between;
   width: 800px;
@@ -8,17 +9,28 @@
 }
 
 .info-item {
-  padding: 0;
+  padding: 0px;
+}
+
+.description {
+  border: solid 1px rgb(211, 211, 211);
+  height: 75%;
+  p {
+    padding: 4px;
+    font-size: 0.9em;
+  }
 }
 
 .booking-box {
-  background-color: rgb(48, 108, 136);
-  border-radius: 4px;
-  text-align: center;
-  align-content: center;
-  padding-top: 24px;
-
+  display:flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
   a {
+    flex-grow: 0;
+    background-color: rgb(48, 108, 136);
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px 24px 8px 24px;
     color:white;
   }
 }
