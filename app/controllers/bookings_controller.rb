@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-  skip_before_action :authenticate_user! # virna
 
   def new
     @booking = Booking.new(booking_params)
@@ -24,7 +23,7 @@ class BookingsController < ApplicationController
   end
 
   def set_artservice
-    @art_service = ArtService.find(params[art_service_id])
+    @art_service = ArtService.find(params[:art_service_id])
   end
 
   def booking_params
