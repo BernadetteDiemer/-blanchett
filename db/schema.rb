@@ -73,7 +73,8 @@ ActiveRecord::Schema.define(version: 2021_10_21_174847) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-  
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "art_services", "users"
   add_foreign_key "bookings", "art_services"
   add_foreign_key "bookings", "users"
