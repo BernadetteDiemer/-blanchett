@@ -3,7 +3,7 @@
     <h3><strong>Create your art service</strong></h3>
   </div>
   <div class="list py-3">
-    <%= simple_form_for @art_services do |a| %>
+    <%= simple_form_for @art_service do |a| %>
      <div class="row">
       <div class="col-sm">
         <%= a.input :category %>
@@ -16,7 +16,7 @@
         <%= a.input :description %>
         <%= a.input :address %>
         <%= a.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= a.hidden_field :user_id, :value => 2 %> <!-- current_user.id -->
+        <%= a.hidden_field current_user.id, :value => 2 %> <!-- current_user.id -->
         <%= a.submit "Save & upload", class: 'btn btn-dark float-right' %>
       <% end %>
   </div>
