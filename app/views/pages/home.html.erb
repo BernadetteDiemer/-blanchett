@@ -1,7 +1,7 @@
 <div id="home">
   <%# Banner & Search Form %>
   <div class="banner">
-    <div class="container justify-content-center">
+    <div class="container">
       <%= simple_form_for :search, url: root_path, method: :get do |f| %>
       <div class="search-form-control">
         <input class="form-control string required" type="text" name="search[query]" placeholder="Search for art services" id="search_query" />
