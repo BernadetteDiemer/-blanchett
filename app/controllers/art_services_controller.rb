@@ -18,9 +18,12 @@ class ArtServicesController < ApplicationController
     end
   end
 
+  def index
+  end
+
+end
   private
 
   def art_services_params
     params.require(:art_service).permit(:title, :description, :price, :address, :category, photos: [])
   end
-end

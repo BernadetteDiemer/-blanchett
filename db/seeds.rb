@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'date'
-ArtService.destroy_all
 Booking.destroy_all
+ArtService.destroy_all
 User.destroy_all
 
 sarah = User.create(
@@ -53,27 +53,27 @@ art_service3 = ArtService.create(
 
 puts '3 services created'
 
-booking_1 = Booking.create(
+booking_1 = Booking.create!(
   {start_time: DateTime.parse('2 May 2022'),
   end_time: DateTime.parse('3 May 2022'),
   status: 'confirmed',
-  user_id: nathalie.id,
-  art_service_id: art_service1.id}
+  user: nathalie,
+  art_service: art_service1}
 )
 
-booking_2 = Booking.create(
+booking_2 = Booking.create!(
   {start_time: DateTime.parse('10 Nov 2022'),
   end_time: DateTime.parse('11 Nov 2022'),
   status: 'pending',
-  user_id: sarah.id,
-  art_service_id: art_service2.id}
+  user: sarah,
+  art_service: art_service2}
 )
 
-booking_3 = Booking.create(
+booking_3 = Booking.create!(
   {start_time: DateTime.parse('21 Dec 2020'),
   end_time: DateTime.parse('22 Dec 2022'),
   status: 'cancelled',
-  user_id: sarah.id,
-  art_service_id: art_service3.id}
+  user: sarah,
+  art_service: art_service3}
 )
 puts '3 bookings created'
