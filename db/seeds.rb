@@ -13,12 +13,14 @@ User.destroy_all
 sarah = User.create(
   {first_name: 'Sarah',
   last_name: 'Smith',
+  about: 'Dance with me, as I create an experience so unique and thoughtful, noone could ever forget it.',
   email: 'sarah_smith@gmail.com',
   password: 'hello123'})
 
 nathalie = User.create(
   {first_name: 'Nathalie',
   last_name: 'Faber',
+  about: 'I will make your hips shake and your arms go around and around, like the wheels of the bus!',
   email: 'nathaliefaber@hotmail.com',
   password: 'funkystuff123'})
 

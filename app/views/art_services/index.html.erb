@@ -1,1 +1,44 @@
-<h1>Available art services</h1>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>Our Art Services</h1>
+    </div>
+  </div>
+
+ <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @art_services.count %> art services out of <%= ArtService.count %> on our website.</p>
+      <% else %>
+        <p> Browse through our art services! Available art services at the moment: <%= ArtService.count %></p>
+      <% end %>
+    </div>
+  </div>
+
+<div class="row">
+    <% @art_services.each do |art_service| %>
+      <div class="col-4">
+        <div class="art_service-card">
+          <div class="art_service-card-image" style="background-image: url('<%= art_service.photos %>')"></div>
+          <div class="art_service-card-content">
+            <div class="art_service-card-title">
+              <h4><%= art_service.title %></h4>
+            </div>
+            <p><%= art_service.address %></p>
+            <div class="flex">
+              <div class="flex">
+                <i class="material-icons mr-2">category</i><span><%= art_service.category %></span>
+              </div>
+              <div class="flex ml-3">
+                <i class="material-icons mr-2">€</i> <%= art_service.price %>
+              </div>
+            </div>
+          </div>
+          <div class="art_service-card-actions">
+            <%= link_to 'More info', art_service_path(art_service) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

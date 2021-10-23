@@ -11,15 +11,8 @@
 
     h3 {
       color: white;
+      text-shadow:rgba(0, 0, 0, 0.3);
       padding-top: 20px;
-    }
-
-    h1 {
-      margin: 0;
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-      font-size: 32px;
-      font-weight: bold;
     }
 
     p {
@@ -28,8 +21,12 @@
       opacity: .7;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     }
+
+    a {
+      margin-top: 2em;
+      margin-left: 260px;
+    }
   }
-<<<<<<< HEAD
 }
 /* Float four columns side by side */
 .column {
@@ -42,15 +39,6 @@
 .row {
   margin: 0 -5px;
 }
-=======
-
-  /* Float four columns side by side */
-  .column {
-    float: left;
-    width: 25%;
-    padding: 0 10px;
-  }
->>>>>>> master
 
   /* Remove extra left and right margins, due to padding in columns */
   .row {
