@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :art_services do
     resources :bookings, only: [:show, :new, :create]
   end
-  resources :bookings, only: [:new, :create]
+  resources :bookings, only: [:new, :create, :index]
   resources :art_services
 
 
