@@ -17,7 +17,6 @@ class ArtServicesController < ApplicationController
       render :new
     end
   end
-
   private
 
   def art_services_params
