@@ -26,7 +26,6 @@ class ArtServicesController < ApplicationController
     end
   end
 
-#seeds
   def index
    @art_services = ArtService.all
   end
@@ -45,17 +44,15 @@ end
     redirect_to art_services_path
   end
 
-#master
+
   private
 
   def art_services_params
     params.require(:art_service).permit(:title, :description, :price, :address, :category, photos: [])
   end
-#seeds
 
 
   def set_art_service
     @art_service = ArtService.find(params[:id])
     authorize @art_service
   end
-#master
