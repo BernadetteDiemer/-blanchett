@@ -1,79 +1,81 @@
-<%# Banner & Search Form %>
-<div class="banner">
+<div id="home">
+  <%# Banner & Search Form %>
+  <div class="banner">
+    <div class="container">
+      <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+      <div class="search-form-control">
+        <input class="form-control string required" type="text" name="search[query]" placeholder="Search for art services" id="search_query" />
+        <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+      <% end %>
+      <h3 class="text-center">In need of an art service? You came to the right place.</h3>
+    </div>
+  </div>
+
+  <%# Main container. %>
   <div class="container">
-    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-    <div class="search-form-control">
-      <input class="form-control string required" type="text" name="search[query]" placeholder="Search for art services" id="search_query" />
-      <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i> Search
-      </button>
+    <%# Explore Nearby Cards %>
+    <div class="text-left"><h3>Explore nearby</h3></div>
+        <div class="row">
+          <div class="column">
+            <div class="card">Prenzlauer Berg</div>
+          </div>
+          <div class="column">
+            <div class="card">Friedrichshain</div>
+          </div>
+          <div class="column">
+            <div class="card">Neukölln</div>
+          </div>
+          <div class="column">
+          <div class="card">Kreuzberg</div>
+        </div>
     </div>
-    <% end %>
-    <h3 class="text-center">In need of an art service? You came to the right place.</h3>
+
+    <%# Explore Artists Cards %>
+    <div class="text-left"><h3>Explore artists</h3></div>
+        <div class="row">
+          <div class="column">
+            <div class="card">Singers</div>
+          </div>
+          <div class="column">
+            <div class="card">Dancers</div>
+          </div>
+          <div class="column">
+            <div class="card">DJs</div>
+          </div>
+          <div class="column">
+            <div class="card">Painters</div>
+          </div>
+        </div>
+
+    <%# End of the page box items %>
+    <div class="text-left"><h4>Are you an aspiring artist?</h4></div>
+      <div class="call-to-action-box">
+        <div class="box-item">
+          <div class="text-field">
+            <p>Don’t waste your talent. Instead show it to the world and earn some extra income.It’s so easy. Sign up and join our community of talents.</p>
+          </div>
+          <a class="btn btn-flat" href="#">Learn more.</a>
+        </div>
+        <div class="box-item">
+          <img src="https://images.unsplash.com/photo-1609189184127-04652523de91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" alt="artist-painter-painting">
+        </div>
+      </div>
   </div>
-</div>
 
-<%# Main container. %>
-<div class="container">
-  <%# Explore Nearby Cards %>
-  <div class="text-left"><h3>Explore nearby</h3></div>
-      <div class="row">
-        <div class="column">
-          <div class="card">Prenzlauer Berg</div>
+  <%# Page's Footer  %>
+  <div class="footer">
+        <div class="footer-links">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
-        <div class="column">
-          <div class="card">Friedrichshain</div>
+        <div class="footer-copyright">
+          This footer is made with <i class="fas fa-heart"></i> at Le Wagon by friendly team.
         </div>
-        <div class="column">
-          <div class="card">Neukölln</div>
-        </div>
-        <div class="column">
-        <div class="card">Kreuzberg</div>
-      </div>
   </div>
-
-  <%# Explore Artists Cards %>
-  <div class="text-left"><h3>Explore artists</h3></div>
-      <div class="row">
-        <div class="column">
-          <div class="card">Singers</div>
-        </div>
-        <div class="column">
-          <div class="card">Dancers</div>
-        </div>
-        <div class="column">
-          <div class="card">DJs</div>
-        </div>
-        <div class="column">
-          <div class="card">Painters</div>
-        </div>
-      </div>
-
-  <%# End of the page box items %>
-  <div class="text-left"><h4>Are you an aspiring artist?</h4></div>
-    <div class="call-to-action-box">
-      <div class="box-item">
-        <div class="text-field">
-          <p>Don’t waste your talent. Instead show it to the world and earn some extra income.It’s so easy. Sign up and join our community of talents.</p>
-        </div>
-        <a class="btn btn-flat" href="#">Learn more.</a>
-      </div>
-      <div class="box-item">
-        <img src="https://images.unsplash.com/photo-1609189184127-04652523de91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" alt="artist-painter-painting">
-      </div>
-    </div>
-</div>
-
-<%# Page's Footer  %>
-<div class="footer">
-      <div class="footer-links">
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <div class="footer-copyright">
-        This footer is made with <i class="fas fa-heart"></i> at Le Wagon by friendly team.
-      </div>
 </div>
