@@ -23,7 +23,7 @@
     <div class="gallery-box">
       <div class="service-gallery">
         <% @art_service.photos.each do |photo| %>
-          <div class="card-category" style="background-image: url('<%= cl_image_path photo, height: 300, crop: :fill %>')"></div>
+          <div class="gallery-item" style="background-image: url('<%= cl_image_path photo.key%>')"></div>
         <% end %>
       </div>
     </div>

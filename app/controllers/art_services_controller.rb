@@ -26,10 +26,6 @@ class ArtServicesController < ApplicationController
     end
   end
 
-  def index
-   @art_services = ArtService.all
-  end
-
   def edit
   end
 
