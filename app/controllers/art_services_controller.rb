@@ -8,12 +8,10 @@ class ArtServicesController < ApplicationController
   end
 
   def show
-    @markers = @art_service.geocoded.map do |service|
-      {
-        lat: service.latitude,
-        lng: service.longitude
-      }
-    end
+    @markers = [{
+        lat: @art_service.latitude,
+        lng: @art_service.longitude
+      }]
   end
 
   def new
