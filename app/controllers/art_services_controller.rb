@@ -3,7 +3,7 @@ class ArtServicesController < ApplicationController
   before_action :set_art_service, only: [:show, :edit, :update, :destroy]
 
   def index
-    @art_services = ArtService.all
+    # @art_services = ArtService.all
     @art_services = policy_scope(ArtService).order(created_at: :desc)
   end
 
@@ -24,10 +24,6 @@ class ArtServicesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def index
-   @art_services = ArtService.all
   end
 
   def edit

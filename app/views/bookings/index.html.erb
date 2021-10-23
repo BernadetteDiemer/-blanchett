@@ -1,0 +1,19 @@
+<div class="container py-5" style="max-width: 600px; padding-top: 4em;">
+  <div class="title">
+    <strong><h2 class="card-title">My booking requests</h2></strong>
+  </div>
+
+  <% @bookings.each do |booking| %>
+    <div>
+      <div>
+        <h5><strong>Request by </strong><%= booking.user.first_name %> for <%= booking.art_service.title %></h5>
+        <div>
+          <p><strong>When:</strong> <%= booking.start_time %></p>
+          <p><strong>Where:</strong> <%= booking.art_service.address %></p>
+        </div>
+        <%= link_to "Accept request", class: 'card-link' %>
+        <%= link_to "Decline request", class: 'card-link' %>
+      </div>
+    </div>
+  <% end %>
+</div>
