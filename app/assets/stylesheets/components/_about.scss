@@ -1,0 +1,13 @@
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-end;
+}
+
+.about {
+  width: 800px;
+  margin-bottom: 1.6em;
+  p {
+    font-size: 0.9em;
+  }
+}
