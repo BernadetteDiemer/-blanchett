@@ -19,6 +19,7 @@ class ArtServicesController < ApplicationController
   end
 
   def index
+   @art_services = ArtService.all
   end
 
 end
