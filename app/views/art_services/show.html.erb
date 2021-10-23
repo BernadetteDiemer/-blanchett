@@ -44,8 +44,10 @@
 
 
   <h4>Location</h4>
-  <div class="map box">
-  </div>
+  <div id="map"
+    style="width: 100%; height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
   <div class="about">
     <h4>About <%= @art_service.user.first_name %></h4>
