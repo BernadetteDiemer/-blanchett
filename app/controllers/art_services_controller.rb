@@ -28,6 +28,7 @@ class ArtServicesController < ApplicationController
 
 seeds
   def index
+   @art_services = ArtService.all
   end
 
 end
