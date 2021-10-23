@@ -1,8 +1,22 @@
 .service-show-top-info {
   list-style-type: none; // removes default bullets
-  margin: auto; // centers the list in it's parent element
+  margin: 0;
+  padding: 0;
 
   li {
     float: left; // makes the list items horizontal to each other
+    margin-right: 16px;
+    font-size: 0.8em;
+  }
+}
+
+.li-item {
+  display: flex;
+  align-content: flex-end;
+
+  i {
+    margin-right: 0.6em;
+    margin-top: 0.2em;
+    padding: 0;
   }
 }

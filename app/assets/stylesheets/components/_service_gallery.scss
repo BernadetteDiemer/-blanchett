@@ -1,8 +1,16 @@
-.gallery-item {
-  padding: 8px;
+.gallery-box {
+  position: relative;
 }
 
-.flexbox {
-  display: flex; // declares that this is a flex-item
-  flex-direction: column; // should make the two images appear vertically
+.service-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap:8px;
+  height: 350px;
+  position: absolute;
+}
+
+.gallery-item {
+  width: 261px;
+  background-size: cover;
 }

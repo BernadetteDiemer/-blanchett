@@ -13,6 +13,9 @@ class ApplicationController < ActionController::Base
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
+
+    # For app/views/art_services/new.html.erb user_id
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:id])
   end
 
   private
