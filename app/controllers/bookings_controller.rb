@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
   end
 
   def set_artservice
-    @art_service = ArtService.find(params[artservice_id])
+    @art_service = ArtService.find(params[art_service_id])
   end
 
   def booking_params
