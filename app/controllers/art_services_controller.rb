@@ -8,6 +8,10 @@ class ArtServicesController < ApplicationController
   end
 
   def show
+    @markers = [{
+        lat: @art_service.latitude,
+        lng: @art_service.longitude
+      }]
   end
 
   def new
