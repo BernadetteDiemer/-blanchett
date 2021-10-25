@@ -1,3 +1,24 @@
-<div class="container">
-  <p>There should be a booking form to book an art service here.</p>
+<div class="container py-5" style="max-width: 600px; padding-top: 4em;">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1555656220-46e30749d330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80)">
+    <h3><strong>Book an art service now.</strong></h3>
+  </div>
+
+  <div class="list py-3">
+    <%= simple_form_for @booking do |a| %>
+    <div class="row">
+      <div class="col-md">
+        <%= a.input :start_time, as: :date, label: "From:"%>
+      </div>
+      <div class="col-sm">
+        <%= a.input :end_time, as: :date, label: "Until:" %>
+      </div>
+    </div>
+      <div>
+      <%= a.association :art_service, label: "Choose the art service you want:" %>
+      </div>
+        <%= a.hidden_field current_user.id, :value => 2 %> <!-- current_user.id -->
+        <%= a.submit "Book", class: 'btn btn-dark float-right' %>
+      <% end %>
+    </div>
+  </div>
 </div>
