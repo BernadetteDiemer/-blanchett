@@ -13,6 +13,17 @@
         <% end %>
         <h3 class="text-center">In need of an art service? You came to the right place.</h3>
         <a href="/art_services" class="btn btn-primary col-4">Browse through all services</a>
+
+<div id="home">
+  <%# Banner & Search Form %>
+  <div class="banner">
+    <div class="container">
+      <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+      <div class="search-form-control">
+        <input class="form-control string required" type="text" name="search[query]" placeholder="Search for art services" id="search_query" />
+        <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+        </button>
       </div>
     </div>
 
