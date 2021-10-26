@@ -4,7 +4,7 @@
   </div>
 
   <div class="list py-3">
-    <%= simple_form_for @booking do |a| %>
+    <%= simple_form_for [ @art_service, @booking ] do |a| %>
     <div class="row">
       <div class="col-md">
         <%= a.input :start_time, as: :date, label: "From:"%>
@@ -13,11 +13,8 @@
         <%= a.input :end_time, as: :date, label: "Until:" %>
       </div>
     </div>
-      <div>
-      <%= a.association :art_service, label: "Choose the art service you want:" %>
-      </div>
         <%= a.hidden_field current_user.id, :value => 2 %> <!-- current_user.id -->
-        <%= a.submit "Book", class: 'btn btn-dark float-right' %>
+        <%= a.button :submit, class: 'btn btn-dark float-right' %>
       <% end %>
     </div>
   </div>

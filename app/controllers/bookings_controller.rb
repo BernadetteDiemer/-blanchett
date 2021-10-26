@@ -1,26 +1,26 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :home, :index]
-  # before_action :set_booking, only: [:create]
-  # before_action :booking_params, only: [:create]
+
 
   def index
-    # @bookings = Booking.all
     @bookings = policy_scope(Booking)
   end
 
   def new
     @booking = Booking.new
+    @art_service = ArtService.find(params[:art_service_id])
     authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
-    authorize @booking
     @booking.user = current_user
     art_service = ArtService.find(params[:art_service_id])
     @booking.art_service = art_service
-    if @booking.save
-      redirect_to bookings_path(@bookings)
+    @booking.status = 1
+    authorize @booking
+    if @booking.save!
+      redirect_to bookings_path
     else
       render :new
     end
@@ -28,11 +28,8 @@ class BookingsController < ApplicationController
 
   private
 
-  # def set_booking
-  #   @booking = Booking.find(params[:id])
-  # end
 
   def booking_params
-    params[:booking].require(booking_params)
+    params.require(:booking).permit(:start_time, :end_time, :status)
   end
 end
