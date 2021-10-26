@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
 
   resources :bookings, only: [:new, :create, :index]
-  resources :art_services
+  resources :art_services do
+    resources :reviews, only: [:new, :create]
+  end
 end
