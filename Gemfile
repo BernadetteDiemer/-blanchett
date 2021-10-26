@@ -29,6 +29,9 @@ gem 'devise'
 # cloudinary for images uploaded by users
 gem 'cloudinary', '~> 1.16.0'
 
+# geocoding for maps
+gem 'geocoder'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
