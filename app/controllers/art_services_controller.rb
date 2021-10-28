@@ -19,6 +19,19 @@ class ArtServicesController < ApplicationController
     authorize @art_service
   end
 
+  def edit
+  end
+
+  def update
+    @art_service.update(art_services_params)
+    redirect_to art_service_path(@art_service)
+  end
+
+  def destroy
+    @art_service.destroy
+    redirect_to art_services_path
+  end
+
   def create
     @art_services = ArtService.new(art_services_params)
     @art_services.user = current_user
@@ -29,6 +42,7 @@ class ArtServicesController < ApplicationController
       render :new
     end
   end
+
   private
 
   def art_services_params
