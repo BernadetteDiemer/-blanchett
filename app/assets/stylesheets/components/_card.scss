@@ -18,23 +18,6 @@
   margin-bottom: 34px;
 } // Virna
 
-.card-category {
-  background-size: cover;
-  background-position: center;
-  background-color: cadetblue;
-  border: solid 1px rgb(79, 124, 126);
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 1.2em;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 4px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
 .card-product {
   overflow: hidden;
   height: 120px;
@@ -67,38 +50,3 @@
     padding: 16px;
   }
 } // Virna
-
-// // Smallest device
-// @media (min-width: 100px) and (max-width: 575px) {
-//   .cards {
-//     grid-template-columns: 1fr;
-//   }
-// }
-
-// // Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) {
-//   .cards {
-//     grid-template-columns: 1fr;
-//   }
-// }
-
-// // Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) {
-//   .cards {
-//     grid-template-columns: 1fr 1fr;
-//   }
-// }
-
-// // Large devices (desktops, 992px and up)
-// @media (min-width: 992px) {
-//   .cards {
-//     grid-template-columns: 1fr 1fr 1fr;
-//   }
-// }
-
-// // Extra large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px) {
-//   .cards {
-//     grid-template-columns: 1fr 1fr 1fr;
-//   }
-// }

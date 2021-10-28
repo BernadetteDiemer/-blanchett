@@ -61,28 +61,25 @@
     </div>
   </div>
 
-  <ul class="list-group">
-    <% @art_service.reviews.each do |review| %>
-      <li class="list-group-item">
-        <div class="card-category">
-          <%= review.rating %>
-          <%= review.comment %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+    <%= link_to "Write a Review", new_art_service_review_path(@art_service), class: "btn btn-primary" %>
 
-  <div class="cards">
+  <div class="row justify-content-center">
+    <ul id="list-group">
+      <% @art_service.reviews.each do |review| %>
+        <li id="list-group-item">
+          <div class="card-category">
+            <% review.rating.times do %>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            <% end %>
+            <%= review.comment %>
+            <% if current_user.id == review.user.id %>
+              <%= link_to "Delete this review", art_service_review_path( @art_service, review.id ), method: :delete, class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
 
-    <div class="card-category">
-      Review 2
-    </div>
-
-    <div class="card-category">
-      Review 3
-    </div>
   </div>
-
-    <%= link_to "Write Review", new_art_service_review_path(@art_service), class: "btn btn-primary" %>
 
 </div>
