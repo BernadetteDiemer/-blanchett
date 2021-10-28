@@ -61,10 +61,18 @@
     </div>
   </div>
 
+  <ul class="list-group">
+    <% @art_service.reviews.each do |review| %>
+      <li class="list-group-item">
+        <div class="card-category">
+          <%= review.rating %>
+          <%= review.comment %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
   <div class="cards">
-    <div class="card-category">
-      Review 1
-    </div>
 
     <div class="card-category">
       Review 2
@@ -74,5 +82,7 @@
       Review 3
     </div>
   </div>
+
+    <%= link_to "Write Review", new_art_service_review_path(@art_service), class: "btn btn-primary" %>
 
 </div>
