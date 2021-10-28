@@ -1,9 +1,16 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :home, :index]
 
+  def home
+  end
+
+  def user_profile
+    @user = User.find(params[:id])
+  end
 
   def index
-    @bookings = policy_scope(Booking)
+    @bookings = policy_scope(Booking).order(created_at: :desc)
+    @user = current_user
   end
 
   def new
@@ -17,7 +24,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     art_service = ArtService.find(params[:art_service_id])
     @booking.art_service = art_service
-    @booking.status = 1
+    @booking.status = "pending"
     authorize @booking
     if @booking.save!
       redirect_to bookings_path

@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_one_attached :photo
   has_many :art_services
+  has_many :bookings
 end
