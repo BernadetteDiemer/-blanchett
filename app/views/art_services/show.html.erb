@@ -38,13 +38,13 @@
     </div>
 
     <div class="info-item col-4 flex-column booking-box">
-      <a href="/bookings/new" class="btn btn-primary">Book Now</a>
+      <%= link_to "Book now", new_art_service_booking_path(@art_service), class: 'btn btn-primary' %>
       <br>
       <%= link_to 'Edit', edit_art_service_path(@art_service), class: 'btn btn-primary'%>
        <br>
       <%= link_to "Delete #{@art_service.title}", art_service_path(@art_service), method: :delete, data: { confirm: "Are your sure?"}, class: 'btn btn-primary' %>
       <br>
-      <%= link_to "Back to all art services", art_service_path, class: 'btn btn-primary' %>
+      <%= link_to "Back to all art services", art_services_path, class: 'btn btn-primary' %>
     </div>
   </div>
 
