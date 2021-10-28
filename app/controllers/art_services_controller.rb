@@ -12,6 +12,8 @@ class ArtServicesController < ApplicationController
         lat: @art_service.latitude,
         lng: @art_service.longitude
       }]
+
+    @average = average_rating(@art_service)
   end
 
   def new
@@ -52,5 +54,15 @@ class ArtServicesController < ApplicationController
   def set_art_service
     @art_service = ArtService.find(params[:id])
     authorize @art_service
+  end
+
+  def average_rating(art_service)
+    all = []
+    art_service.reviews.each do |review|
+      all << review.rating
+    end
+    sum = all.inject(0, :+)
+    average = sum / art_service.reviews.length
+    return average
   end
 end

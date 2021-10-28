@@ -55,20 +55,52 @@
   list-style-type: none;
 }
 
-.card-category {
-  background-size: cover;
-  background-position: center;
-  background-color: rgb(216, 216, 216);
-  border: solid 1px rgb(207, 207, 207);
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 0.9em;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+.card-review {
+  display:flex;
+  flex-direction: column;
+  width: 800px;
+  height: 100%;
+  margin-top: 1.5em;
+  background-color: rgb(230, 230, 230);
+  border: solid 1px rgb(218, 218, 218);
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+
+  p {
+    margin: 1em;
+    color: black;
+    font-size: 0.9em;
+  }
+}
+
+.item {
+  display:flex;
+  justify-content: space-between;
+  padding-top: 1em;
+  padding-left: 1em;
+
+  .delete-button {
+    margin-top: -0.2em;
+    padding-right: 1em;
+    font-size: 0.8em;
+  }
+
+  .stars {
+    display: flex;
+
+    i {
+      color: rgb(236, 201, 0);
+      text-shadow: 0 0 4px rgba(0,0,0,0.1);
+    }
+
+    p {
+      flex-direction: row-reverse;
+      margin-right: 16px;
+      font-size: 0.8em;
+      margin-top: 0;
+      margin-left: 1em;
+    }
+  }
 }
 
 // info section
