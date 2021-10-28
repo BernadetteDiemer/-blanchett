@@ -1,3 +1,4 @@
+#card { //# ensuring that these styles only apply to the homepage
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -66,7 +67,7 @@
   .card-product-infos {
     padding: 16px;
   }
-} // Virna
+}} // Virna
 
 // // Smallest device
 // @media (min-width: 100px) and (max-width: 575px) {
@@ -102,3 +103,9 @@
 //     grid-template-columns: 1fr 1fr 1fr;
 //   }
 // }
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
