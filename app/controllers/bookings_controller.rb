@@ -26,6 +26,19 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @art_service = ArtService.find(params[:art_service_id])
+    @art_service.update(art_service_params)
+    redirect_to art_service_path(@art_service)
+  end
+
+  def destroy
+    @art_service = ArtService.find(params[:art_service_id])
+    @art_service.destroy(art_service_params)
+    redirect_to art_service_path(@art_service)
+  end
+
+
   private
 
 
