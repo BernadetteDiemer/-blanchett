@@ -5,13 +5,19 @@ class ArtServicesController < ApplicationController
   def index
     # @art_services = ArtService.all
     @art_services = policy_scope(ArtService).order(created_at: :desc)
+
+    if params[:query].present?
+      @art_services = ArtService.search_by_title_and_category(params[:query])
+    else
+      @art_services = policy_scope(ArtService).order(created_at: :desc)
+    end
   end
 
   def show
     @markers = [{
         lat: @art_service.latitude,
         lng: @art_service.longitude
-      }]
+    }]
   end
 
   def new
@@ -29,6 +35,7 @@ class ArtServicesController < ApplicationController
       render :new
     end
   end
+
   private
 
   def art_services_params
