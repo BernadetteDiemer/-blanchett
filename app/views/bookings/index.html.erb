@@ -1,12 +1,12 @@
 <div class="container py-5" style="max-width: 800px; padding-top: 4em;">
-  <h1><strong>Hi <%= @user.first_name %>👋</strong></h1>
+  <h1><strong>Hi <%= current_user.first_name %>👋</strong></h1>
 
   <div>
     <p>Make sure to add some information about yourself and add a pretty picture to your profile.😊</p>
   </div>
 
   <div class="list py-3">
-    <%= simple_form_for @user, url: profile_path(@user) do |a| %>
+    <%= simple_form_for current_user, url: profile_path(current_user) do |a| %>
       <%= a.input :about %>
       <%= a.input :photo, as: :file %>
       <%= a.submit "Save & Upload", class: 'btn btn-dark float-left' %>
@@ -17,7 +17,7 @@
     <h3 class="text-center"><strong>My art services 🎨</strong></h3>
     <%= link_to "+ Create", new_art_service_path %>
     <div class="cards_all d-flex justify-content-center mt-3">
-      <% @user.art_services.each do |art_service| %>
+      <% current_user.art_services.each do |art_service| %>
         <div class="card m-2" style="width: 16rem;">
           <div class="card-body">
             <h5 class="card-title"><%= art_service.title %></h5>
@@ -32,12 +32,6 @@
 </div>
 
 
-
-
-
-
-
-
 <div class="container" style="max-width: 800px; padding-top: 4em;">
   <div class="row">
 
@@ -46,8 +40,7 @@
           <strong><h4 class="text-center mb-3">Awesome, people can't <br>wait to see you 🎊</h4></strong>
         </div>
 
-        <% @bookings.each do |booking| %>
-        <% if booking.user != current_user %>
+        <% current_user.bookings_as_booked.each do |booking| %>
           <div class="card m-3">
             <div class="card-body">
               <div class="card-text">
@@ -60,8 +53,8 @@
                   <% elsif booking.status == "pending" %>
                     <span><strong>Status: </strong></span><span style="color: blue"><%= booking.status %></span>
                     <div class="text-right">
-                      <%= link_to "Decline", class: 'card-link' %>
-                      <%= link_to "Accept", class: "btn btn-flat" %>
+                      <%= link_to "Cancel",update_status_path(booking, status: 'cancelled'), method: 'patch', remote: true, class: 'card-link' %>
+                      <%= link_to "Accept", update_status_path(booking, status: 'accepted'), method: 'patch', remote: true, class: "btn btn-flat" %>
                     </div>
                   <% else %>
                     <span><strong>Status: </strong></span><span style="color: red"><%= booking.status %></span>
@@ -69,7 +62,6 @@
               </div>
             </div>
           </div>
-          <% end %>
         <% end %>
       </div>
 
@@ -78,26 +70,24 @@
       <div class="title">
         <strong><h4 class="text-center mb-3">Be ready for your upcoming shows soon 💃</h4></strong>
       </div>
-      <% @bookings.each do |booking| %>
-        <% if booking.user == current_user %>
-         <div class="card m-3">
-            <div class="card-body">
-              <div class="card-text">
-                <p><strong>Request by </strong><em>me</em> for <em><%= booking.art_service.title %></em></p>
-                <p><strong>When:</strong> <%= booking.start_time.strftime("%A, %b %e %Y") %></p>
-                <p><strong>Where:</strong> <%= booking.art_service.address %></p>
-                <p><strong>Revenue: </strong>€<%= booking.art_service.price %></p>
-                  <% if booking.status == "confirmed" %>
-                    <span><strong>Status: </strong> <span style="color: green"><%= booking.status %></span></span>
-                  <% elsif booking.status == "pending" %>
-                    <span><strong>Status: </strong></span><span style="color: blue"><%= booking.status %></span>
-                  <% else %>
-                    <span><strong>Status: </strong></span><span style="color: red"><%= booking.status %></span>
-                  <% end %>
-              </div>
+      <% current_user.bookings.each do |booking| %>
+        <div class="card m-3">
+          <div class="card-body">
+            <div class="card-text">
+              <p><strong>Request by </strong><em>me</em> for <em><%= booking.art_service.title %></em></p>
+              <p><strong>When:</strong> <%= booking.start_time.strftime("%A, %b %e %Y") %></p>
+              <p><strong>Where:</strong> <%= booking.art_service.address %></p>
+              <p><strong>Revenue: </strong>€<%= booking.art_service.price %></p>
+                <% if booking.status == "confirmed" %>
+                  <span><strong>Status: </strong> <span style="color: green"><%= booking.status %></span></span>
+                <% elsif booking.status == "pending" %>
+                  <span><strong>Status: </strong></span><span style="color: blue"><%= booking.status %></span>
+                <% else %>
+                  <span><strong>Status: </strong></span><span style="color: red"><%= booking.status %></span>
+                <% end %>
             </div>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
 
