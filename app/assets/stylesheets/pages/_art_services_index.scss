@@ -1,4 +1,18 @@
 .art-services-index {
+
+  .index_title {
+    h1 {
+      text-align: center;
+      font-size: 25px;
+      margin-bottom: 1.5rem;
+      margin-top: 2rem;
+    }
+  }
+
+  .index_text {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
   .index_grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -8,6 +22,13 @@
   .art_service-card-image{
     height: 150px;
     border-radius: 4px;
+    background-size: cover;
+  }
+
+  .art-service-link {
+    color: black;
+
+
   }
 
   .card-content-top{
@@ -17,14 +38,20 @@
     align-items: center;
 
     h4 {
-      font-size: 13px;
+      font-size: 16px;
       font-weight: bolder;
       margin-bottom: 0;
+      margin-top: 0.5rem;
     }
 
     + p {
-      font-size: 10px;
+      font-size: 12px;
     }
+
+  }
+  .art_service_price{
+    font-size: 14px;
+    margin-top: 0.5rem;
   }
 
   .general-container{
