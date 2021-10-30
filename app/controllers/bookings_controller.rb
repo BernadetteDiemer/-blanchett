@@ -9,8 +9,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = policy_scope(Booking).order(created_at: :desc)
-    @user = current_user
+    policy_scope(Booking)
   end
 
   def new
@@ -45,6 +44,18 @@ class BookingsController < ApplicationController
     redirect_to art_service_path(@art_service)
   end
 
+  def update_status
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    if params[:status] == "cancelled"
+      @booking.status = "cancelled"
+      @booking.save
+    else
+      @booking.status = 'confirmed'
+      @booking.save
+    end
+    redirect_to bookings_path
+  end
 
   private
 
