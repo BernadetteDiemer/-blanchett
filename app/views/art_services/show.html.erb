@@ -86,7 +86,7 @@
 
               <div class="delete-button">
                 <% if current_user != nil %>
-                  <% if current_user.id == review.user.id %>
+                  <% if current_user.id == review.user.id || current_user.id == @art_service.user.id %>
                     <%= link_to "Delete this review", art_service_review_path( @art_service, review.id ), method: :delete, class: 'btn btn-primary' %>
                   <% end %>
                 <% end %>

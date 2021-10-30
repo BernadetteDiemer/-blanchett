@@ -26,7 +26,7 @@
       <% end %>
       <div class="art_service-card-content">
         <div class="card-content-top">
-          <h4><%= art_service.title %></h4>
+          <h4><%= link_to art_service.title, art_service_path(art_service.id) %></h4>
           <div class="d-flex">
             <i class="material-icons mr-2">€</i> <%= art_service.price %>
           </div>
