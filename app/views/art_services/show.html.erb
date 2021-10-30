@@ -1,4 +1,9 @@
 <div class="container">
+
+  <div id="back">
+    <i class="fas fa-long-arrow-alt-left"></i><%= link_to "  Back to all art services", art_services_path %>
+  </div>
+
   <h3><%= @art_service.title.upcase %></h3>
   <ul class="service-show-top-info">
     <li>
@@ -8,7 +13,7 @@
     </li>
     <li>
       <div class="li-item">
-        <i class="fa fa-map-marker" aria-hidden="true"></i><p>City, Country</p>
+        <i class="fa fa-archive" aria-hidden="true"></i><p> <%= @art_service.category.downcase%></p>
       </div>
     </li>
     <li>
@@ -18,18 +23,22 @@
       </div>
     </li>
   </ul>
-  <br>
+
   <% if @art_service.photos.attached? %>
     <div class="gallery-box">
       <div class="service-gallery">
         <% @art_service.photos.each do |photo| %>
-          <div class="gallery-item" style="background-image: url('<%= cl_image_path photo.key%>')"></div>
+          <%# <div class="gallery-item" style="background-image: url('<%= cl_image_path photo.key%>
+          <div class="gallery-item">
+            <%= cl_image_tag photo.key, class: 'gallery-image'%>
+          </div>
         <% end %>
       </div>
     </div>
   <% end %>
 
-  <div class="info box">
+  <div class="info">
+
     <div class="info-item col-8">
       <h4>Description</h4>
       <div class="description">
@@ -37,15 +46,35 @@
       </div>
     </div>
 
-    <div class="info-item col-4 flex-column booking-box">
-      <%= link_to "Book now", new_art_service_booking_path(@art_service), class: 'btn btn-primary' %>
-      <br>
-      <%= link_to 'Edit', edit_art_service_path(@art_service), class: 'btn btn-primary'%>
-       <br>
-      <%= link_to "Delete #{@art_service.title}", art_service_path(@art_service), method: :delete, data: { confirm: "Are your sure?"}, class: 'btn btn-primary' %>
-      <br>
-      <%= link_to "Back to all art services", art_services_path, class: 'btn btn-primary' %>
+    <div class="info-item col-4 booking-box">
+      <% if current_user != nil %>
+
+        <% if current_user.id == @art_service.user.id %>
+          <%= link_to 'Edit', edit_art_service_path(@art_service), class: 'btn btn-dark'%>
+          <%= link_to "Delete #{@art_service.title}", art_service_path(@art_service), method: :delete, data: { confirm: "Are your sure?"}, class: 'btn btn-danger' %>
+        <% else %>
+
+            <%= simple_form_for [ @art_service, @booking ] do |a| %>
+              <div class="input-box">
+                <div class="input-field">
+                  <%= a.input :start_time, as: :date, label: "From:"%>
+                </div>
+                <div class="input-field">
+                  <%= a.input :end_time, as: :date, label: "Until:" %>
+                </div>
+              </div>
+              <%= a.hidden_field current_user.id, :value => 2 %> <!-- current_user.id -->
+              <p>Total cost: <%= @art_service.price %>€</p>
+              <%= a.button :submit, class: 'btn btn-dark float-right' %>
+            <% end %>
+
+        <% end %>
+
+      <%else%>
+        <%= link_to "Log in to book this service", new_user_session_path, class: 'btn btn-success' %>
+      <% end %>
     </div>
+
   </div>
 
 
@@ -58,19 +87,13 @@
   <div class="about">
     <h4>About <%= @art_service.user.first_name %></h4>
     <p><%= @art_service.user.about %></p>
-    <div class="info-box">
-      <div class="info-element">
-        <p><i class="fa fa-archive" aria-hidden="true"></i><%= @art_service.category%></p>
-      </div>
-      <div class="info-element">
-        <a href="#" class="btn btn-primary">Contact artist</a>
-      </div>
+    <div class="about-box">
+      <a href="#" class="btn btn-dark">Contact artist</a>
     </div>
   </div>
 
-  <%= link_to "Write a Review", new_art_service_review_path(@art_service), class: "btn btn-primary" %>
-
   <div class="row justify-content-center">
+    <%= link_to "Write a Review", new_art_service_review_path(@art_service), class: "btn btn-dark" %>
     <ul id="list-group">
       <% @art_service.reviews.each do |review| %>
         <li id="list-group-item">
@@ -87,7 +110,7 @@
               <div class="delete-button">
                 <% if current_user != nil %>
                   <% if current_user.id == review.user.id || current_user.id == @art_service.user.id %>
-                    <%= link_to "Delete this review", art_service_review_path( @art_service, review.id ), method: :delete, class: 'btn btn-primary' %>
+                    <%= link_to "Delete this review", art_service_review_path( @art_service, review.id ), method: :delete, class: 'btn btn-danger' %>
                   <% end %>
                 <% end %>
               </div>
