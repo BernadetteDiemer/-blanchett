@@ -53,7 +53,7 @@
           <%= link_to 'Edit', edit_art_service_path(@art_service), class: 'btn btn-dark'%>
           <%= link_to "Delete #{@art_service.title}", art_service_path(@art_service), method: :delete, data: { confirm: "Are your sure?"}, class: 'btn btn-danger' %>
         <% else %>
-
+          <div class="booking-form">
             <%= simple_form_for [ @art_service, @booking ] do |a| %>
               <div class="input-box">
                 <div class="input-field">
@@ -67,6 +67,7 @@
               <p>Total cost: <%= @art_service.price %>€</p>
               <%= a.button :submit, class: 'btn btn-dark float-right' %>
             <% end %>
+          </div>
 
         <% end %>
 
