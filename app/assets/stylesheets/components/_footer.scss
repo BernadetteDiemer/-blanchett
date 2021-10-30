@@ -28,3 +28,9 @@
 .footer .fa-heart {
   color: #D23333;
 } // Virna
+
+.page-sections {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}

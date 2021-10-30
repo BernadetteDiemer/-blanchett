@@ -12,60 +12,66 @@
   </head>
 
   <body>
-  <%# Navbar from Le Wagon's UI kit.%>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-      <a class="navbar-brand" href="/">
-        <img src=""/>blanchett <%#logo%>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <% if user_signed_in? %>
-            <li class="nav-item active">
-              <%= link_to "Explore all", art_services_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item dropdown">
-              <% if current_user.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <div class="page-sections">
+      <div class="navbar-section">
+        <%# Navbar from Le Wagon's UI kit.%>
+        <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+          <a class="navbar-brand" href="/">
+            <img src=""/>blanchett <%#logo%>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item active">
+                  <%= link_to "Explore all", art_services_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item dropdown">
+                  <% if current_user.photo.attached? %>
+                    <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <% else %>
+                    <%= image_tag "https://images.pexels.com/photos/1983037/pexels-photo-1983037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <% end %>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <%= link_to "My profile", bookings_path, class: "dropdown-item" %>
+                    <%= link_to "Create new art service", new_art_service_path, class: "dropdown-item" %>
+                    <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                  </div>
+                </li>
               <% else %>
-                <%= image_tag "https://images.pexels.com/photos/1983037/pexels-photo-1983037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <li class="nav-item">
+                  <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Become an artist", new_user_registration_path, class: "nav-link" %>
+                </li>
               <% end %>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to "My profile", bookings_path, class: "dropdown-item" %>
-                <%= link_to "Create new art service", new_art_service_path, class: "dropdown-item" %>
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-              </div>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Become an artist", new_user_registration_path, class: "nav-link" %>
-            </li>
-          <% end %>
-        </ul>
+            </ul>
+          </div>
+        </div>
+        <div class="notification">
+          <span class="notice"><%= notice %></span>
+          <span class="alert"><%= alert %></span>
+        </div>
+      </div>
+      <div class="content-section"><%= yield %></div>
+      <div class="footer-section">
+        <%# Page's Footer  %>
+        <div class="footer">
+          <div class="footer-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+          <div class="footer-copyright">
+            This footer is made with <i class="fas fa-heart"></i> at Le Wagon by friendly team.
+          </div>
+        </div>
       </div>
     </div>
-    <div class="notification">
-      <span class="notice"><%= notice %></span>
-      <span class="alert"><%= alert %></span>
-    </div>
-    <%= yield %>
 
-    <%# Page's Footer  %>
-    <div class="footer">
-      <div class="footer-links">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <div class="footer-copyright">
-        This footer is made with <i class="fas fa-heart"></i> at Le Wagon by friendly team.
-      </div>
-    </div>
   </body>
 </html>
