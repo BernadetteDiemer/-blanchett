@@ -44,14 +44,6 @@
   }
 }
 
-// gallery with user uploaded pictures
-
-// .gallery-box {
-//   // position: relative;
-//   height: 350px;
-//   width: 100%;
-// }
-
 .service-gallery {
   float: left;
   display: flex;
@@ -104,6 +96,7 @@
   .booking-form {
     border: 1px solid #ced4da;
     background-color: white;
+    padding: 0.3em;
   }
   .form-control {
     font-size: 0.7em;
