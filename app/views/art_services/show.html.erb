@@ -1,4 +1,9 @@
 <div class="container">
+
+  <div id="back">
+    <i class="fas fa-long-arrow-alt-left"></i><%= link_to "  Back to all art services", art_services_path %>
+  </div>
+
   <h3><%= @art_service.title.upcase %></h3>
   <ul class="service-show-top-info">
     <li>
@@ -6,11 +11,11 @@
         <i class="fa fa-star" aria-hidden="true"></i><p><strong><%= @average.to_i %></strong> (<%= @art_service.reviews.length %>)</p>
       </div>
     </li>
-    <li>
+    <%# <li>
       <div class="li-item">
         <i class="fa fa-map-marker" aria-hidden="true"></i><p>City, Country</p>
       </div>
-    </li>
+    </li> %>
     <li>
       <div class="li-item">
         <i class="fa fa-user" aria-hidden="true"></i>
@@ -29,7 +34,8 @@
     </div>
   <% end %>
 
-  <div class="info box">
+  <div class="row info">
+
     <div class="info-item col-8">
       <h4>Description</h4>
       <div class="description">
@@ -37,15 +43,15 @@
       </div>
     </div>
 
-    <div class="info-item col-4 flex-column booking-box">
-      <%= link_to "Book now", new_art_service_booking_path(@art_service), class: 'btn btn-primary' %>
-      <br>
-      <%= link_to 'Edit', edit_art_service_path(@art_service), class: 'btn btn-primary'%>
-       <br>
-      <%= link_to "Delete #{@art_service.title}", art_service_path(@art_service), method: :delete, data: { confirm: "Are your sure?"}, class: 'btn btn-primary' %>
-      <br>
-      <%= link_to "Back to all art services", art_services_path, class: 'btn btn-primary' %>
+    <div class="info-item col-4 booking-box">
+      <% if current_user.id == @art_service.user.id %>
+        <%= link_to 'Edit', edit_art_service_path(@art_service), class: 'btn btn-primary'%>
+        <%= link_to "Delete #{@art_service.title}", art_service_path(@art_service), method: :delete, data: { confirm: "Are your sure?"}, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to "Book now", new_art_service_booking_path(@art_service), class: 'btn btn-primary' %>
+      <% end %>
     </div>
+
   </div>
 
 
@@ -60,7 +66,7 @@
     <p><%= @art_service.user.about %></p>
     <div class="info-box">
       <div class="info-element">
-        <p><i class="fa fa-archive" aria-hidden="true"></i><%= @art_service.category%></p>
+        <p><i class="fa fa-archive" aria-hidden="true"></i>    <%= @art_service.category.downcase%></p>
       </div>
       <div class="info-element">
         <a href="#" class="btn btn-primary">Contact artist</a>
