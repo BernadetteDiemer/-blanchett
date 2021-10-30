@@ -1,0 +1,155 @@
+// gallery with user uploaded pictures
+
+.gallery-box {
+  position: relative;
+}
+
+.service-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap:8px;
+  height: 350px;
+  position: absolute;
+}
+
+.gallery-item {
+  width: 261px;
+  background-position: center;
+}
+
+// map size
+
+#map {
+  height: 200px;
+  width:800px;
+}
+
+// icons on top of page
+
+.service-show-top-info {
+  list-style-type: none; // removes default bullets
+  margin: 0;
+  padding: 0;
+
+  li {
+    float: left; // makes the list items horizontal to each other
+    margin-right: 16px;
+    font-size: 0.8em;
+  }
+}
+
+.li-item {
+  display: flex;
+  align-content: flex-end;
+
+  i {
+    margin-right: 0.6em;
+    margin-top: 0.2em;
+    padding: 0;
+  }
+}
+
+// reviews
+
+#list-group-item {
+  list-style-type: none;
+}
+
+.card-review {
+  display:flex;
+  flex-direction: column;
+  width: 800px;
+  height: 100%;
+  margin-top: 1.5em;
+  background-color: rgb(230, 230, 230);
+  border: solid 1px rgb(218, 218, 218);
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+
+  p {
+    margin: 1em;
+    color: black;
+    font-size: 0.9em;
+  }
+}
+
+.item {
+  display:flex;
+  justify-content: space-between;
+  padding-top: 1em;
+  padding-left: 1em;
+
+  .delete-button {
+    margin-top: -0.2em;
+    padding-right: 1em;
+    font-size: 0.8em;
+  }
+
+  .stars {
+    display: flex;
+
+    i {
+      color: rgb(236, 201, 0);
+      text-shadow: 0 0 4px rgba(0,0,0,0.1);
+    }
+
+    p {
+      flex-direction: row-reverse;
+      margin-right: 16px;
+      font-size: 0.8em;
+      margin-top: 0;
+      margin-left: 1em;
+    }
+  }
+}
+
+// info section
+
+.info {
+  margin-top: 380px;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  padding-left:0;
+  padding-right:0;
+  margin-bottom: 1.3em;
+}
+
+.info-item {
+  padding: 0px;
+}
+
+.description {
+  border: solid 1px rgb(211, 211, 211);
+  height: 75%;
+  p {
+    padding: 4px;
+    font-size: 0.9em;
+  }
+}
+
+.booking-box {
+  display:flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  border: 1px;
+  border-color: grey;
+  padding-left: 20px;
+}
+
+// about section (info-box is atm used by both the about-, and the info-section
+
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-end;
+}
+
+.about {
+  width: 800px;
+  margin-bottom: 1.6em;
+  p {
+    font-size: 0.9em;
+  }
+}

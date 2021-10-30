@@ -7,5 +7,11 @@ Rails.application.routes.draw do
 
   resources :art_services do
     resources :bookings, only: [:new, :create, :update, :destroy]
+    resources :reviews, only: [:new, :create, :destroy]
   end
+
+  patch 'bookings/:id/update_status', to: 'bookings#update_status', as: "update_status"
+
+
+
 end
