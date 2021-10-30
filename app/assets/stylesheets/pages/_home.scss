@@ -28,16 +28,40 @@
     }
   }
 
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {
+    margin: 0 -5px;
+  }
+
+  .cards {
+    width: 800px;
+    margin-bottom: 1.6em;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* this adds the "card" effect */
+    padding: 65px 16px;
+    text-align: center;
+    width: 160px;
+    height: 160px;
+    align-content: center;
+    background-color: #90e0ef;
+    margin-bottom: 34px;
+  } // Virna
+
+  .card-category {
+    background-color: cadetblue;
+    border: solid 1px rgb(79, 124, 126);
+    font-size: 1.2em;
+    border-radius: 4px;
+  }
+
   /* Float four columns side by side */
   .column {
     float: left;
     width: 25%;
     padding: 0 10px;
-  }
-
-  /* Remove extra left and right margins, due to padding in columns */
-  .row {
-    margin: 0 -5px;
   }
 
   /* Clear floats after the columns */
@@ -76,7 +100,6 @@
       height: 250px;
       justify-content: space-between;
       background-color: bisque;
-
   }
 
   .box-item {

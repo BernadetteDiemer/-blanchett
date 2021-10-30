@@ -1,5 +1,5 @@
 <div class="art-services-index">
-  <div class="container mt-3">
+  <div class="general-container mt-3">
     <div class="row">
       <div class="col-12">
         <h1>Our Art Services</h1>
@@ -7,40 +7,34 @@
     </div>
 
   <div class="row">
-      <div class="col">
-        <% if @query %>
-          <p>You searched for <strong><%= @query %></strong>. We found <%= @art_services.count %> art services out of <%= ArtService.count %> on our website.</p>
-        <% else %>
-          <p> Browse through our art services! Available art services at the moment: <%= ArtService.count %></p>
-        <% end %>
-      </div>
-    </div>
-
-  <div class="row">
-      <% @art_services.each do |art_service| %>
-        <div class="col-4">
-          <div class="art_service-card">
-            <div class="art_service-card-image" style="background-image: url('<%= art_service.photos %>')"></div>
-            <div class="art_service-card-content">
-              <div class="art_service-card-title">
-                <h4><%= art_service.title %></h4>
-              </div>
-              <p><%= art_service.address %></p>
-              <div class="flex">
-                <div class="flex">
-                  <i class="material-icons mr-2">category</i><span><%= art_service.category %></span>
-                </div>
-                <div class="flex ml-3">
-                  <i class="material-icons mr-2">€</i> <%= art_service.price %>
-                </div>
-              </div>
-            </div>
-            <div class="art_service-card-actions">
-              <%= link_to 'More info', art_service_path(art_service) %>
-            </div>
-          </div>
-        </div>
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @art_services.count %> art services out of <%= ArtService.count %> on our website.</p>
+      <% else %>
+        <p> Browse through our art services! Available art services at the moment: <%= ArtService.count %></p>
       <% end %>
     </div>
   </div>
+
+
+
+<div class="index_grid">
+  <% @art_services.each do |art_service| %>
+    <div class="art_service-card">
+      <% if art_service.photos.attached?%>
+        <div class="art_service-card-image" style="background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path art_service.photos.first.key%>')"></div>
+      <% end %>
+      <div class="art_service-card-content">
+        <div class="card-content-top">
+          <h4><%= art_service.title %></h4>
+          <div class="d-flex">
+            <i class="material-icons mr-2">€</i> <%= art_service.price %>
+          </div>
+        </div>
+        <p><%= art_service.address %></p>
+
+      </div>
+
+    </div>
+  <% end %>
 </div>

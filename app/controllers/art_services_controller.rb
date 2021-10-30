@@ -5,6 +5,12 @@ class ArtServicesController < ApplicationController
   def index
     # @art_services = ArtService.all
     @art_services = policy_scope(ArtService).order(created_at: :desc)
+
+    if params[:query].present?
+      @art_services = ArtService.search_by_title_and_category(params[:query])
+    else
+      @art_services = policy_scope(ArtService).order(created_at: :desc)
+    end
   end
 
   def show
@@ -21,17 +27,6 @@ class ArtServicesController < ApplicationController
     authorize @art_service
   end
 
-  def create
-    @art_services = ArtService.new(art_services_params)
-    @art_services.user = current_user
-    authorize @art_services
-    if @art_services.save
-      redirect_to art_service_path(@art_services)
-    else
-      render :new
-    end
-  end
-
   def edit
   end
 
@@ -43,6 +38,17 @@ class ArtServicesController < ApplicationController
   def destroy
     @art_service.destroy
     redirect_to art_services_path
+  end
+
+  def create
+    @art_services = ArtService.new(art_services_params)
+    @art_services.user = current_user
+    authorize @art_services
+    if @art_services.save
+      redirect_to art_service_path(@art_services)
+    else
+      render :new
+    end
   end
 
   private
