@@ -6,10 +6,14 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    user
   end
 
   def show?
-    return true
+    record.user == user
+  end
+
+  def update_status?
+    record.user == user || record.art_service.user == user
   end
 end
