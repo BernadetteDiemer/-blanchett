@@ -57,12 +57,16 @@ class ArtServicesController < ApplicationController
   end
 
   def average_rating(art_service)
-    all = []
-    art_service.reviews.each do |review|
-      all << review.rating
+    if art_service.reviews.blank?
+      return 0
+    else
+      all = []
+      art_service.reviews.each do |review|
+        all << review.rating
+      end
+      sum = all.inject(0, :+)
+      average = sum / art_service.reviews.length
+      return average
     end
-    sum = all.inject(0, :+)
-    average = sum / art_service.reviews.length
-    return average
   end
 end
