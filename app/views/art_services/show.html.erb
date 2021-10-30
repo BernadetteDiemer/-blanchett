@@ -47,11 +47,31 @@
     </div>
 
     <div class="info-item col-4 booking-box">
-      <% if current_user.id == @art_service.user.id %>
-        <%= link_to 'Edit', edit_art_service_path(@art_service), class: 'btn btn-primary'%>
-        <%= link_to "Delete #{@art_service.title}", art_service_path(@art_service), method: :delete, data: { confirm: "Are your sure?"}, class: 'btn btn-primary' %>
-      <% else %>
-        <%= link_to "Book now", new_art_service_booking_path(@art_service), class: 'btn btn-primary' %>
+      <% if current_user != nil %>
+
+        <% if current_user.id == @art_service.user.id %>
+          <%= link_to 'Edit', edit_art_service_path(@art_service), class: 'btn btn-dark'%>
+          <%= link_to "Delete #{@art_service.title}", art_service_path(@art_service), method: :delete, data: { confirm: "Are your sure?"}, class: 'btn btn-danger' %>
+        <% else %>
+
+            <%= simple_form_for [ @art_service, @booking ] do |a| %>
+              <div class="input-box">
+                <div class="input-field">
+                  <%= a.input :start_time, as: :date, label: "From:"%>
+                </div>
+                <div class="input-field">
+                  <%= a.input :end_time, as: :date, label: "Until:" %>
+                </div>
+              </div>
+              <%= a.hidden_field current_user.id, :value => 2 %> <!-- current_user.id -->
+              <p>Total cost: <%= @art_service.price %>€</p>
+              <%= a.button :submit, class: 'btn btn-dark float-right' %>
+            <% end %>
+
+        <% end %>
+
+      <%else%>
+        <%= link_to "Log in to book this service", new_user_session_path, class: 'btn btn-success' %>
       <% end %>
     </div>
 
@@ -68,12 +88,12 @@
     <h4>About <%= @art_service.user.first_name %></h4>
     <p><%= @art_service.user.about %></p>
     <div class="about-box">
-      <a href="#" class="btn btn-primary">Contact artist</a>
+      <a href="#" class="btn btn-dark">Contact artist</a>
     </div>
   </div>
 
   <div class="row justify-content-center">
-    <%= link_to "Write a Review", new_art_service_review_path(@art_service), class: "btn btn-primary" %>
+    <%= link_to "Write a Review", new_art_service_review_path(@art_service), class: "btn btn-dark" %>
     <ul id="list-group">
       <% @art_service.reviews.each do |review| %>
         <li id="list-group-item">
@@ -90,7 +110,7 @@
               <div class="delete-button">
                 <% if current_user != nil %>
                   <% if current_user.id == review.user.id || current_user.id == @art_service.user.id %>
-                    <%= link_to "Delete this review", art_service_review_path( @art_service, review.id ), method: :delete, class: 'btn btn-primary' %>
+                    <%= link_to "Delete this review", art_service_review_path( @art_service, review.id ), method: :delete, class: 'btn btn-danger' %>
                   <% end %>
                 <% end %>
               </div>

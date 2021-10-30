@@ -20,6 +20,7 @@ class ArtServicesController < ApplicationController
       }]
 
     @average = average_rating(@art_service)
+    @booking = Booking.new
   end
 
   def new
