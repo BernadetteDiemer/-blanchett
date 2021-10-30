@@ -17,8 +17,9 @@
           <%= a.input :description %>
           <%= a.input :address %>
           <%= a.input :photos, as: :file, input_html: { multiple: true } %>
-          <%= a.hidden_field current_user.id, :value => 2 %> <!-- current_user.id -->
-          <%= a.submit "Save & upload", class: 'btn btn-dark float-right' %>
+          <%= a.hidden_field current_user.id, :value => current_user.id %>
+          <%= a.submit "Save & upload", class: 'btn btn-dark float-left' %>
+          <%= link_to "Back", bookings_path, class: 'float-right mt-3' %>
         <% end %>
     </div>
   </div>

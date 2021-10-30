@@ -18,12 +18,13 @@
           <%= a.input :address %>
           <%= a.input :photos, as: :file, input_html: { multiple: true } %>
           <%= a.hidden_field :users_id, value: current_user.id %>
-          <%= a.submit "Save & update", class: 'btn btn-dark float-right' %>
+          <%= a.submit "Save & update", class: 'btn btn-dark float-left' %>
         <% end %>
     </div>
     <%= link_to "Delete",
         art_service_path(@art_service),
         method: :delete,
-        data: { confirm: "Are you sure?" } %>
+        data: { confirm: "Are you sure?" },
+        class: 'float-right' %>
   </div>
 </div>
