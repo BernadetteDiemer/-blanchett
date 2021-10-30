@@ -46,26 +46,35 @@
 
 // gallery with user uploaded pictures
 
-.gallery-box {
-  position: relative;
-}
+// .gallery-box {
+//   // position: relative;
+//   height: 350px;
+//   width: 100%;
+// }
 
 .service-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap:8px;
-  height: 350px;
-  position: absolute;
+  float: left;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+  overflow: hidden;
+  height: 400px;
+  align-items: center;
 }
 
 .gallery-item {
-  width: 261px;
-  background-position: center;
+  width: 48%;
+
+  img {
+    width: 100%;
+  }
 }
 
 // info section
 
 .info {
+  display: flex;
+  justify-content: space-between;
   margin-top: 380px;
   height: 100%;
   width: 100%;
@@ -102,12 +111,12 @@
 #map {
   height: 300px;
   width:100%;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 }
 
 // about section (info-box is atm used by both the about-, and the info-section
 
-.info-box {
+.about-box {
   display: flex;
   justify-content: space-between;
   align-content: flex-end;
@@ -118,6 +127,7 @@
   margin-bottom: 2em;
   p {
     font-size: 0.9em;
+    margin-bottom: 2em;
   }
 }
 
@@ -126,6 +136,9 @@
 
 #list-group {
   margin-bottom: 2em;
+  a {
+     margin-bottom: 2em;
+  }
 }
 
 #list-group-item {
