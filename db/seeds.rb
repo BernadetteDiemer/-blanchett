@@ -24,6 +24,20 @@ nathalie = User.create(
   email: 'nathaliefaber@hotmail.com',
   password: 'funkystuff123'})
 
+max = User.create(
+  {first_name: 'Max',
+  last_name: 'Schmidt',
+  about: 'I am a talented card magician, touring the world. Get ready to be tricked.',
+  email: 'max@gmail.com',
+  password: 'hello123'})
+
+felix = User.create(
+  {first_name: 'Felix',
+  last_name: 'Fat',
+  about: 'I am a champions league breakdancer.',
+  email: 'felix_felix@gmail.com',
+  password: 'hello123'})
+
 puts '2 users created'
 
 art_service1 = ArtService.create(
@@ -53,6 +67,69 @@ art_service3 = ArtService.create(
   user: nathalie}
 )
 
+art_service4 = ArtService.create(
+  {title: 'asian chef',
+  description: 'wonderful 2 hour opera concert',
+  price: '400€',
+  address: 'Berlin Charlottenburg',
+  category: 'singing',
+  user: felix}
+)
+
+art_service5 = ArtService.create(
+  {title: 'film making',
+  description: 'wonderful 2 hour opera concert',
+  price: '1000€',
+  address: 'Berlin Zehlendorf',
+  category: 'film',
+  user: nathalie}
+)
+
+art_service6 = ArtService.create(
+  {title: 'puppet theatre',
+  description: 'Funny muppet show',
+  price: '150€',
+  address: 'Berlin Friedrichshain',
+  category: 'theatre',
+  user: max}
+)
+
+art_service7 = ArtService.create(
+  {title: 'Card magician',
+  description: 'I do a lot of card tricks',
+  price: '300€',
+  address: 'Berlin Neukölln',
+  category: 'magic',
+  user: nathalie}
+)
+
+art_service8 = ArtService.create(
+  {title: 'baking',
+  description: 'I bake wonderful cinnamon buns',
+  price: '99€',
+  address: 'Berlin Kreuzberg',
+  category: 'cooking',
+  user: sarah}
+)
+
+art_service9 = ArtService.create(
+  {title: 'Painting',
+  description: 'I am the next Frida Kahlo',
+  price: '999',
+  address: 'Berlin Prenzlauer Berg',
+  category: 'painter',
+  user: nathalie}
+)
+
+art_service10 = ArtService.create(
+  {title: 'Yoga teacher',
+  description: 'I am a Vinyasa flow yoga teacher.',
+  price: '200€',
+  address: 'Berlin Mitte',
+  category: 'sports',
+  user: sarah}
+)
+
 puts '3 services created'
 
 booking_1 = Booking.create!(
@@ -77,5 +154,13 @@ booking_3 = Booking.create!(
   status: 'cancelled',
   user: sarah,
   art_service: art_service3}
+)
+
+booking_4 = Booking.create!(
+  {start_time: DateTime.parse('10 Nov 2022'),
+  end_time: DateTime.parse('11 Nov 2022'),
+  status: 'pending',
+  user: sarah,
+  art_service: art_service4}
 )
 puts '3 bookings created'
