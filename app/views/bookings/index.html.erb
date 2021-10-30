@@ -1,5 +1,4 @@
 <div class="container py-5" style="max-width: 800px; padding-top: 4em;">
-
   <h1><strong>Hi <%= @user.first_name %>👋</strong></h1>
 
   <div>
@@ -16,6 +15,7 @@
   <br>
   <div class="abc my-5">
     <h3 class="text-center"><strong>My art services 🎨</strong></h3>
+    <%= link_to "+ Create", new_art_service_path %>
     <div class="cards_all d-flex justify-content-center mt-3">
       <% @user.art_services.each do |art_service| %>
         <div class="card m-2" style="width: 16rem;">
@@ -43,7 +43,7 @@
 
       <div class="col-6">
         <div class="title">
-          <strong><h4 class="text-center mb-3">Awesome, you have <br><%= @bookings.count %> booking requests 🎊</h4></strong>
+          <strong><h4 class="text-center mb-3">Awesome, people can't <br>wait to see you 🎊</h4></strong>
         </div>
 
         <% @bookings.each do |booking| %>
@@ -52,7 +52,7 @@
             <div class="card-body">
               <div class="card-text">
                 <p><strong>Request by </strong><em><%= booking.user.first_name %></em> for <em><%= booking.art_service.title %></em></p>
-                <p><strong>When:</strong> <%= booking.start_time %></p>
+                <p><strong>When:</strong> <%= booking.start_time.strftime("%A, %b %e %Y") %></p>
                 <p><strong>Where:</strong> <%= booking.art_service.address %></p>
                 <p><strong>Revenue: </strong>€<%= booking.art_service.price %></p>
                   <% if booking.status == "confirmed" %>
@@ -76,7 +76,7 @@
 
       <div class="col-6">
       <div class="title">
-        <strong><h4 class="text-center mb-3">Are you ready? You made <br><%= @bookings.count %> booking requests</h4></strong>
+        <strong><h4 class="text-center mb-3">Be ready for your upcoming shows soon 💃</h4></strong>
       </div>
       <% @bookings.each do |booking| %>
         <% if booking.user == current_user %>
@@ -84,7 +84,7 @@
             <div class="card-body">
               <div class="card-text">
                 <p><strong>Request by </strong><em>me</em> for <em><%= booking.art_service.title %></em></p>
-                <p><strong>When:</strong> <%= booking.start_time %></p>
+                <p><strong>When:</strong> <%= booking.start_time.strftime("%A, %b %e %Y") %></p>
                 <p><strong>Where:</strong> <%= booking.art_service.address %></p>
                 <p><strong>Revenue: </strong>€<%= booking.art_service.price %></p>
                   <% if booking.status == "confirmed" %>
